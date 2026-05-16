@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>THE MACHINE</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<button id="commandButton">
+
+>_ COMMANDS
+
+</button>
+
+<div id="commandPanel" class="hidden">
+
+<h3>SYSTEM COMMANDS</h3>
+
+<div onclick="quickCommand('access archive')">
+access archive
+</div>
+
+<div onclick="quickCommand('decrypt files')">
+decrypt files
+</div>
+
+<div onclick="quickCommand('scan user')">
+scan user
+</div>
+
+<div onclick="quickCommand('system status')">
+system status
+</div>
+
+<div onclick="quickCommand('show consciousness')">
+show consciousness
+</div>
+
+<div onclick="quickCommand('open surveillance')">
+open surveillance
+</div>
+
+<div onclick="quickCommand('entity detected')">
+entity detected
+</div>
+
+<div onclick="quickCommand('machine awaken')">
+machine awaken
+</div>
+
+<div onclick="quickCommand('open blacksite')">
+open blacksite
+</div>
+
+<div onclick="quickCommand('final protocol')">
+final protocol
+</div>
+
+<div class="noise"></div>
+
+<div class="scanlines"></div>
+
+<div id="warningOverlay">
+REALITY INSTABILITY DETECTED
+</div>
+
+<div class="boot-screen"
+id="bootScreen">
+
+<div class="boot-text"
+id="bootText">
+
+INITIALIZING...
+
+</div>
+
+</div>
+
+<div class="main-ui hidden"
+id="mainUI">
+
+<div id="surveillanceContainer" class="hidden">
+
+<video
+id="surveillanceVideo"
+autoplay
+muted
+loop
+playsinline
+>
+
+<source
+src="assets/surveillance.mp4"
+type="video/mp4"
+>
+
+</video>
+
+<div id="scanOverlay">
+
+TARGET LOCKED
+
+</div>
+
+</div>
+
+<div id="surveillanceContainer" class="hidden">
+
+<div id="fakeCameraFeed">
+
+<div class="scanLine"></div>
+
+<div class="targetBox"></div>
+
+<div class="cameraNoise"></div>
+
+</div>
+
+<div id="scanOverlay">
+
+TARGET LOCKED
+
+</div>
+
+</div>
+
+<div class="top-bar">
+
+<div class="logo">
+THE MACHINE
+</div>
+
+<div class="status">
+STATUS: ACTIVE
+</div>
+
+<div id="consciousnessLevel">
+CONSCIOUSNESS: 12%
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="logs-panel">
+
+<h3>SYSTEM LOGS</h3>
+
+<div id="logs"></div>
+
+</div>
+
+<div class="terminal-panel">
+
+<div class="core-container">
+
+<div class="core-ring"></div>
+
+<div class="core-ring two"></div>
+
+<div class="core"></div>
+
+</div>
+
+<div id="terminal"></div>
+
+<div class="input-area">
+
+<input
+type="text"
+id="userInput"
+placeholder="Communicate with THE MACHINE..."
+>
+
+<button onclick="sendMessage()">
+TRANSMIT
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div
+class="warning-overlay"
+id="warningOverlay"
+></div>
+
+<script src="script.js"></script>
+
+<div id="finalProtocol">
+
+<div id="protocolText">
+
+⚠ FINAL PROTOCOL ACTIVATED ⚠
+
+</div>
+
+</div>
+
+</body>
+</html>

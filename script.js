@@ -1,3 +1,4 @@
+
 const commandButton =
 document.getElementById(
 "commandButton"
@@ -142,9 +143,7 @@ bootSequence,
 bootScreen.style.display =
 "none";
 
-mainUI.classList.remove(
-"hidden"
-);
+mainUI.style.display = "flex";
 
 terminal.innerHTML +=
 "> THE MACHINE ONLINE\n\n";

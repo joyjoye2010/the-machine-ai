@@ -154,8 +154,6 @@ startAmbientHum();
 
 }
 
-bootSequence();
-
 function resetIdleTimer(){
 
 clearTimeout(idleTimer);
@@ -1416,3 +1414,15 @@ input.value = command;
 sendMessage();
 
 }
+
+window.addEventListener("load", () => {
+
+mainUI.style.display = "none";
+
+setTimeout(() => {
+
+bootSequence();
+
+}, 500);
+
+});

@@ -632,7 +632,7 @@ async function generateResponse(userMessage) {
 
         const response =
             await fetch(
-                "https://ai-virus.onrender.com/chat",
+                "https://the-machine-ai.onrender.com/chat",
                 {
 
                     method: "POST",
@@ -710,7 +710,7 @@ async function showArchives() {
 
         const response =
             await fetch(
-                "https://ai-virus.onrender.com/archive"
+                "https://the-machine-ai.onrender.com/archive"
             );
 
         const data =

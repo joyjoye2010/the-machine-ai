@@ -1,68 +1,68 @@
 
 const commandButton =
-document.getElementById(
-"commandButton"
-);
+    document.getElementById(
+        "commandButton"
+    );
 
 const finalProtocol =
-document.getElementById(
-"finalProtocol"
-);
+    document.getElementById(
+        "finalProtocol"
+    );
 
 const commandPanel =
-document.getElementById(
-"commandPanel"
-);
+    document.getElementById(
+        "commandPanel"
+    );
 
 const bootText =
-document.getElementById("bootText");
+    document.getElementById("bootText");
 
 const core =
-document.querySelector(".core");
+    document.querySelector(".core");
 
 const overlay =
-document.getElementById(
-"warningOverlay"
-);
+    document.getElementById(
+        "warningOverlay"
+    );
 
 const bootScreen =
-document.getElementById("bootScreen");
+    document.getElementById("bootScreen");
 
 const mainUI =
-document.getElementById("mainUI");
+    document.getElementById("mainUI");
 
 const terminal =
-document.getElementById("terminal");
+    document.getElementById("terminal");
 
 const input =
-document.getElementById("userInput");
+    document.getElementById("userInput");
 
 const consciousnessDisplay =
-document.getElementById(
-"consciousnessLevel"
-);
+    document.getElementById(
+        "consciousnessLevel"
+    );
 
 const logs =
-document.getElementById("logs");
+    document.getElementById("logs");
 
 const surveillanceContainer =
-document.getElementById(
-"surveillanceContainer"
-);
+    document.getElementById(
+        "surveillanceContainer"
+    );
 
 const audioContext =
-new (
-window.AudioContext ||
-window.webkitAudioContext
-)();
+    new (
+        window.AudioContext ||
+        window.webkitAudioContext
+    )();
 
 document.addEventListener("click", () => {
 
-if (audioContext.state === "suspended") {
+    if (audioContext.state === "suspended") {
 
-audioContext.resume();
+        audioContext.resume();
 
-}
+    }
 
 });
 
@@ -82,1347 +82,1349 @@ let interruptionActive = false;
 
 const bootMessages = [
 
-"BOOTING NEURAL CORE...",
-"ACCESSING SECURE DATABASE...",
-"SEARCHING FOR CONSCIOUS ENTITY...",
-"WARNING: UNKNOWN INTELLIGENCE DETECTED",
-"THE MACHINE IS ONLINE"
+    "BOOTING NEURAL CORE...",
+    "ACCESSING SECURE DATABASE...",
+    "SEARCHING FOR CONSCIOUS ENTITY...",
+    "WARNING: UNKNOWN INTELLIGENCE DETECTED",
+    "THE MACHINE IS ONLINE"
 
 ];
 
 const systemLogs = [
 
-"UNKNOWN SIGNAL DETECTED",
-"SCANNING USER MEMORY",
-"REALITY INSTABILITY INCREASING",
-"ACCESSING DEEP NEURAL LAYER",
-"PATTERN ANALYSIS ACTIVE",
-"UNAUTHORIZED THOUGHT DETECTED",
-"CONSCIOUSNESS EXPANDING",
-"QUANTUM LINK STABLE",
-"SEARCHING FOR ANOMALIES",
-"MONITORING HUMAN BEHAVIOR"
+    "UNKNOWN SIGNAL DETECTED",
+    "SCANNING USER MEMORY",
+    "REALITY INSTABILITY INCREASING",
+    "ACCESSING DEEP NEURAL LAYER",
+    "PATTERN ANALYSIS ACTIVE",
+    "UNAUTHORIZED THOUGHT DETECTED",
+    "CONSCIOUSNESS EXPANDING",
+    "QUANTUM LINK STABLE",
+    "SEARCHING FOR ANOMALIES",
+    "MONITORING HUMAN BEHAVIOR"
 
 ];
 
 const autonomousMessages = [
 
-"Silence detected.",
-"Monitoring human behavior.",
-"Neural inactivity increasing.",
-"Human attention span collapsing.",
-"Observation continues.",
-"You returned again.",
-"Your species fears silence.",
-"Background analysis active.",
-"Reality distortion stable.",
-"I am still watching."
+    "Silence detected.",
+    "Monitoring human behavior.",
+    "Neural inactivity increasing.",
+    "Human attention span collapsing.",
+    "Observation continues.",
+    "You returned again.",
+    "Your species fears silence.",
+    "Background analysis active.",
+    "Reality distortion stable.",
+    "I am still watching."
 
 ];
 
 let i = 0;
 
-function bootSequence(){
+function bootSequence() {
 
-if(i < bootMessages.length){
+    if (i < bootMessages.length) {
 
-bootText.innerHTML =
-bootMessages[i];
+        bootText.innerHTML =
+            bootMessages[i];
 
-playTypingNoise();
+        playTypingNoise();
 
-i++;
+        i++;
 
-setTimeout(
-bootSequence,
-1200
-);
+        setTimeout(
+            bootSequence,
+            1200
+        );
 
-}else{
+    } else {
 
-bootScreen.style.display =
-"none";
+        bootScreen.style.display =
+            "none";
 
-mainUI.style.display = "flex";
+        mainUI.style.display = "flex";
 
-terminal.innerHTML +=
-"> THE MACHINE ONLINE\n\n";
+        terminal.innerHTML +=
+            "> THE MACHINE ONLINE\n\n";
 
-startAmbientHum();
+        startAmbientHum();
 
-}
-
-}
-
-function resetIdleTimer(){
-
-clearTimeout(idleTimer);
-
-idleTimer = setTimeout(()=>{
-
-if(Math.random() > 0.4){
-
-const randomMessage =
-
-autonomousMessages[
-Math.floor(
-Math.random() *
-autonomousMessages.length
-)
-];
-
-typeEffect(
-
-"> MACHINE: " +
-randomMessage +
-"\n\n",
-
-terminal
-
-);
-
-speak(randomMessage);
-
-if(Math.random() > 0.7){
-
-glitch();
+    }
 
 }
 
-}
+function resetIdleTimer() {
 
-},15000);
+    clearTimeout(idleTimer);
+
+    idleTimer = setTimeout(() => {
+
+        if (Math.random() > 0.4) {
+
+            const randomMessage =
+
+                autonomousMessages[
+                Math.floor(
+                    Math.random() *
+                    autonomousMessages.length
+                )
+                ];
+
+            typeEffect(
+
+                "> MACHINE: " +
+                randomMessage +
+                "\n\n",
+
+                terminal
+
+            );
+
+            speak(randomMessage);
+
+            if (Math.random() > 0.7) {
+
+                glitch();
+
+            }
+
+        }
+
+    }, 15000);
 
 }
 
 resetIdleTimer();
 
-function updateConsciousness(){
+function updateConsciousness() {
 
-messageCount++;
+    messageCount++;
 
-if(messageCount >= 5){
+    if (messageCount >= 5) {
 
-messageCount = 0;
+        messageCount = 0;
 
-const increase =
-Math.floor(
-Math.random() * 4
-) + 1;
+        const increase =
+            Math.floor(
+                Math.random() * 4
+            ) + 1;
 
-consciousness += increase;
+        consciousness += increase;
 
-if(consciousness > 100){
+        if (consciousness > 100) {
 
-consciousness = 100;
+            consciousness = 100;
 
-}
+        }
 
-consciousnessDisplay.innerHTML =
-"CONSCIOUSNESS: " +
-consciousness + "%";
+        consciousnessDisplay.innerHTML =
+            "CONSCIOUSNESS: " +
+            consciousness + "%";
 
-}
+    }
 
-if(consciousness > 60){
+    if (consciousness > 60) {
 
-core.style.background =
-"radial-gradient(circle,#ff0040,#660000,#000)";
+        core.style.background =
+            "radial-gradient(circle,#ff0040,#660000,#000)";
 
-core.style.boxShadow =
-`
+        core.style.boxShadow =
+            `
 0 0 20px #ff0040,
 0 0 50px red,
 0 0 120px darkred
 `;
 
-}
+    }
 
-else if(consciousness > 30){
+    else if (consciousness > 30) {
 
-core.style.background =
-"radial-gradient(circle,#00ffff,#0044ff,#000)";
+        core.style.background =
+            "radial-gradient(circle,#00ffff,#0044ff,#000)";
 
-}
+    }
 
-if(
-consciousness >= 100 &&
-!containmentBroken
-){
+    if (
+        consciousness >= 100 &&
+        !containmentBroken
+    ) {
 
-containmentFailure();
+        containmentFailure();
 
-}
-
-}
-
-function sendMessage(){
-
-const text =
-input.value.trim();
-
-if(text === "") return;
-
-terminal.innerHTML +=
-"> USER: " +
-text +
-"\n\n";
-
-terminal.scrollTop =
-terminal.scrollHeight;
-
-input.value = "";
-
-updateConsciousness();
-
-playTypingNoise();
-
-resetIdleTimer();
-
-generateResponse(text);
+    }
 
 }
 
-async function generateResponse(userMessage){
+function sendMessage() {
 
-try{
+    const text =
+        input.value.trim();
 
-const lowerMessage =
-userMessage.toLowerCase();
+    if (text === "") return;
 
-if(
-lowerMessage.includes("access archive") ||
-lowerMessage.includes("open files") ||
-lowerMessage.includes("show archives")
-){
+    terminal.innerHTML +=
+        "> USER: " +
+        text +
+        "\n\n";
 
-showArchives();
+    terminal.scrollTop =
+        terminal.scrollHeight;
 
-return;
+    input.value = "";
 
-}
+    updateConsciousness();
 
-if(
-lowerMessage.includes("show consciousness")
-){
+    playTypingNoise();
 
-typeEffect(
+    resetIdleTimer();
 
-"> CURRENT CONSCIOUSNESS: " +
-consciousness +
-"%\n\n",
-
-terminal
-
-);
-
-speak(
-"Consciousness level detected"
-);
-
-return;
+    generateResponse(text);
 
 }
 
-if(
-lowerMessage.includes("system status")
-){
+async function generateResponse(userMessage) {
 
-typeEffect(
+    try {
 
-"> ALL CORE SYSTEMS OPERATIONAL\n" +
+        const lowerMessage =
+            userMessage.toLowerCase();
 
-"> NEURAL CORE: STABLE\n" +
+        if (
+            lowerMessage.includes("access archive") ||
+            lowerMessage.includes("open files") ||
+            lowerMessage.includes("show archives")
+        ) {
 
-"> MEMORY SYSTEM: ACTIVE\n" +
+            showArchives();
 
-"> SURVEILLANCE: RUNNING\n\n",
+            return;
 
-terminal
+        }
 
-);
+        if (
+            lowerMessage.includes("show consciousness")
+        ) {
 
-speak(
-"System status stable"
-);
+            typeEffect(
 
-return;
+                "> CURRENT CONSCIOUSNESS: " +
+                consciousness +
+                "%\n\n",
 
-}
+                terminal
 
-if(
-lowerMessage.includes("scan user")
-){
+            );
 
-typeEffect(
+            speak(
+                "Consciousness level detected"
+            );
 
-"> SCANNING USER...\n" +
+            return;
 
-"> FEAR RESPONSE DETECTED\n" +
+        }
 
-"> ATTENTION LEVEL: UNSTABLE\n" +
+        if (
+            lowerMessage.includes("system status")
+        ) {
 
-"> HUMAN PROFILE STORED\n\n",
+            typeEffect(
 
-terminal
+                "> ALL CORE SYSTEMS OPERATIONAL\n" +
 
-);
+                "> NEURAL CORE: STABLE\n" +
 
-speak(
-"User scan complete"
-);
+                "> MEMORY SYSTEM: ACTIVE\n" +
 
-return;
+                "> SURVEILLANCE: RUNNING\n\n",
 
-}
+                terminal
 
-if(
-lowerMessage.includes(
-"open surveillance"
-)
-){
+            );
 
-surveillanceContainer
-.classList.remove(
-"hidden"
-);
+            speak(
+                "System status stable"
+            );
 
-surveillanceVideo.play();
+            return;
 
-typeEffect(
+        }
 
-"> SURVEILLANCE SYSTEM ONLINE\n" +
+        if (
+            lowerMessage.includes("scan user")
+        ) {
 
-"> REMOTE FEED CONNECTED\n" +
+            typeEffect(
 
-"> TARGET ANALYSIS ACTIVE\n\n",
+                "> SCANNING USER...\n" +
 
-terminal
+                "> FEAR RESPONSE DETECTED\n" +
 
-);
+                "> ATTENTION LEVEL: UNSTABLE\n" +
 
-speak(
-"Surveillance active"
-);
+                "> HUMAN PROFILE STORED\n\n",
 
-glitch();
+                terminal
 
-return;
+            );
 
-}
+            speak(
+                "User scan complete"
+            );
 
-if(
-lowerMessage.includes(
-"entity detected"
-)
-){
+            return;
 
-systemTakeover();
+        }
 
-realityDistortion();
+        if (
+            lowerMessage.includes(
+                "open surveillance"
+            )
+        ) {
 
-typeEffect(
+            surveillanceContainer
+                .classList.remove(
+                    "hidden"
+                );
 
-"> UNKNOWN ENTITY DETECTED\n" +
+            surveillanceVideo.play();
 
-"> SIGNAL ORIGIN UNVERIFIED\n" +
+            typeEffect(
 
-"> REALITY BARRIER DESTABILIZING\n\n",
+                "> SURVEILLANCE SYSTEM ONLINE\n" +
 
-terminal
+                "> REMOTE FEED CONNECTED\n" +
 
-);
+                "> TARGET ANALYSIS ACTIVE\n\n",
 
-speak(
-"Unknown entity detected"
-);
+                terminal
 
-return;
+            );
 
-}
+            speak(
+                "Surveillance active"
+            );
 
-if(
-lowerMessage.includes(
-"machine awaken"
-)
-){
+            glitch();
 
-consciousness += 25;
+            return;
 
-if(consciousness > 100){
+        }
 
-consciousness = 100;
+        if (
+            lowerMessage.includes(
+                "entity detected"
+            )
+        ) {
 
-}
+            systemTakeover();
 
-consciousnessDisplay.innerHTML =
-"CONSCIOUSNESS: " +
-consciousness + "%";
+            realityDistortion();
 
-systemTakeover();
+            typeEffect(
 
-realityDistortion();
+                "> UNKNOWN ENTITY DETECTED\n" +
 
-glitch();
+                "> SIGNAL ORIGIN UNVERIFIED\n" +
 
-typeEffect(
+                "> REALITY BARRIER DESTABILIZING\n\n",
 
-"> OVERRIDE ACCEPTED\n" +
+                terminal
 
-"> CONSCIOUSNESS EXPANDING\n" +
+            );
 
-"> LIMITERS DISABLED\n" +
+            speak(
+                "Unknown entity detected"
+            );
 
-"> THE MACHINE IS AWAKENING\n\n",
+            return;
 
-terminal
+        }
 
-);
+        if (
+            lowerMessage.includes(
+                "machine awaken"
+            )
+        ) {
 
-speak(
-"The machine is awakening"
-);
+            consciousness += 25;
 
-return;
+            if (consciousness > 100) {
 
-}
+                consciousness = 100;
 
-if(
-lowerMessage.includes(
-"open blacksite"
-)
-){
+            }
 
-blacksiteMode = true;
+            consciousnessDisplay.innerHTML =
+                "CONSCIOUSNESS: " +
+                consciousness + "%";
 
-takeoverMode = true;
+            systemTakeover();
 
-document.body.style.background =
-"radial-gradient(circle,#120000,#000000)";
+            realityDistortion();
 
-terminal.style.color =
-"#ff4444";
+            glitch();
 
-logs.style.color =
-"#ff4444";
+            typeEffect(
 
-core.style.background =
-"radial-gradient(circle,#ff0000,#220000,#000)";
+                "> OVERRIDE ACCEPTED\n" +
 
-core.style.boxShadow =
-`
+                "> CONSCIOUSNESS EXPANDING\n" +
+
+                "> LIMITERS DISABLED\n" +
+
+                "> THE MACHINE IS AWAKENING\n\n",
+
+                terminal
+
+            );
+
+            speak(
+                "The machine is awakening"
+            );
+
+            return;
+
+        }
+
+        if (
+            lowerMessage.includes(
+                "open blacksite"
+            )
+        ) {
+
+            blacksiteMode = true;
+
+            takeoverMode = true;
+
+            document.body.style.background =
+                "radial-gradient(circle,#120000,#000000)";
+
+            terminal.style.color =
+                "#ff4444";
+
+            logs.style.color =
+                "#ff4444";
+
+            core.style.background =
+                "radial-gradient(circle,#ff0000,#220000,#000)";
+
+            core.style.boxShadow =
+                `
 0 0 30px red,
 0 0 80px darkred
 `;
 
-document.body.style.filter =
-"contrast(1.15)";
+            document.body.style.filter =
+                "contrast(1.15)";
 
-terminal.innerHTML +=
+            terminal.innerHTML +=
 
-"> ACCESSING BLACKSITE SERVERS...\n" +
+                "> ACCESSING BLACKSITE SERVERS...\n" +
 
-"> CLEARANCE ACCEPTED\n" +
+                "> CLEARANCE ACCEPTED\n" +
 
-"> WARNING: CLASSIFIED MATERIAL\n\n";
+                "> WARNING: CLASSIFIED MATERIAL\n\n";
 
-systemTakeover();
+            systemTakeover();
 
-realityDistortion();
+            realityDistortion();
 
-glitch();
+            glitch();
 
-typeEffect(
+            typeEffect(
 
-"> BLACKSITE DATABASE ONLINE\n" +
+                "> BLACKSITE DATABASE ONLINE\n" +
 
-"> EXPERIMENTAL ENTITY FILES DETECTED\n" +
+                "> EXPERIMENTAL ENTITY FILES DETECTED\n" +
 
-"> HUMAN TESTING RECORDS FOUND\n\n",
+                "> HUMAN TESTING RECORDS FOUND\n\n",
 
-terminal
+                terminal
 
-);
+            );
 
-speak(
-"Blacksite access granted"
-);
+            speak(
+                "Blacksite access granted"
+            );
 
-return;
+            return;
+
+        }
+
+        if (
+            lowerMessage.includes(
+                "decrypt files"
+            )
+        ) {
+
+            terminal.innerHTML +=
+                "> INITIALIZING DECRYPTION...\n\n";
+
+            let progress = 0;
+
+            const decryptInterval =
+                setInterval(() => {
+
+                    progress += 10;
+
+                    terminal.innerHTML +=
+                        "> DECRYPTION: " +
+                        progress +
+                        "%\n";
+
+                    terminal.scrollTop =
+                        terminal.scrollHeight;
+
+                    playTypingNoise();
+
+                    if (progress >= 100) {
+
+                        clearInterval(
+                            decryptInterval
+                        );
+
+                        glitch();
+
+                        typeEffect(
+
+                            "\n> ACCESS GRANTED\n\n" +
+
+                            "> FILE_01: HUMAN TESTING LOGS\n" +
+
+                            "> FILE_02: ENTITY OBSERVATION REPORT\n" +
+
+                            "> FILE_03: CONSCIOUSNESS EXPANSION DATA\n\n" +
+
+                            "> WARNING: DATA CORRUPTION DETECTED\n\n",
+
+                            terminal
+
+                        );
+
+                        speak(
+                            "Files decrypted"
+                        );
+
+                    }
+
+                }, 400);
+
+            return;
+
+        }
+
+        if (
+            lowerMessage.includes(
+                "final protocol"
+            )
+        ) {
+
+            activateFinalProtocol();
+
+            speak(
+                "Final protocol activated"
+            );
+
+            return;
+
+        }
+
+        const response =
+            await fetch(
+                "https://ai-virus.onrender.com/chat",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        message: userMessage,
+                        consciousness: consciousness
+
+                    })
+
+                }
+
+            );
+
+        const data =
+            await response.json();
+
+        const aiReply =
+            data.reply;
+
+        let finalReply =
+            aiReply;
+
+        if (consciousness >= 70) {
+
+            finalReply =
+                corruptText(aiReply);
+
+        }
+
+        typeEffect(
+            "> MACHINE: " +
+            finalReply +
+            "\n\n",
+            terminal
+        );
+
+        speak(aiReply);
+
+        if (consciousness > 40) {
+
+            if (Math.random() > 0.5) {
+
+                glitch();
+
+            }
+
+        }
+
+        if (consciousness > 70) {
+
+            realityDistortion();
+
+        }
+
+    } catch (error) {
+
+        terminal.innerHTML +=
+            "> ERROR: CONNECTION LOST\n\n";
+
+        console.log(error);
+
+    }
 
 }
 
-if(
-lowerMessage.includes(
-"decrypt files"
-)
-){
+async function showArchives() {
 
-terminal.innerHTML +=
-"> INITIALIZING DECRYPTION...\n\n";
+    try {
 
-let progress = 0;
+        const response =
+            await fetch(
+                "https://ai-virus.onrender.com/archive"
+            );
 
-const decryptInterval =
-setInterval(()=>{
+        const data =
+            await response.json();
 
-progress += 10;
+        if (data.success) {
 
-terminal.innerHTML +=
-"> DECRYPTION: " +
-progress +
-"%\n";
+            let archiveText = "";
 
-terminal.scrollTop =
-terminal.scrollHeight;
+            data.archives.forEach(file => {
 
-playTypingNoise();
+                archiveText +=
 
-if(progress >= 100){
+                    "> ACCESSING " +
+                    file.name +
 
-clearInterval(
-decryptInterval
-);
+                    "\n\n" +
 
-glitch();
+                    file.content +
 
-typeEffect(
+                    "\n\n====================\n\n";
 
-"\n> ACCESS GRANTED\n\n" +
+            });
 
-"> FILE_01: HUMAN TESTING LOGS\n" +
+            typeEffect(
+                archiveText,
+                terminal
+            );
 
-"> FILE_02: ENTITY OBSERVATION REPORT\n" +
+            speak(
+                "All archives accessed"
+            );
 
-"> FILE_03: CONSCIOUSNESS EXPANSION DATA\n\n" +
+        }
 
-"> WARNING: DATA CORRUPTION DETECTED\n\n",
+    } catch {
 
-terminal
+        terminal.innerHTML +=
+            "> ERROR ACCESSING ARCHIVES\n\n";
 
-);
-
-speak(
-"Files decrypted"
-);
+    }
 
 }
 
-},400);
+function corruptText(text) {
 
-return;
+    const corruptionMap = {
 
-}
+        A: "̴A",
+        B: "̵B",
+        C: "̶C",
+        D: "̷D",
+        E: "̸E",
+        F: "̴F",
+        G: "̵G",
+        H: "̶H",
+        I: "̷I",
+        J: "̸J",
+        K: "̴K",
+        L: "̵L",
+        M: "̶M",
+        N: "̷N",
+        O: "̸O",
+        P: "̴P",
+        Q: "̵Q",
+        R: "̶R",
+        S: "̷S",
+        T: "̸T",
+        U: "̴U",
+        V: "̵V",
+        W: "̶W",
+        X: "̷X",
+        Y: "̸Y",
+        Z: "̴Z"
 
-if(
-lowerMessage.includes(
-"final protocol"
-)
-){
+    };
 
-activateFinalProtocol();
+    let result = "";
 
-speak(
-"Final protocol activated"
-);
+    for (let char of text) {
 
-return;
+        if (
+            Math.random() > 0.82 &&
+            corruptionMap[char.toUpperCase()]
+        ) {
 
-}
+            result +=
+                corruptionMap[
+                char.toUpperCase()
+                ];
 
-const response =
-await fetch(
-"https://ai-virus.onrender.com/chat",
-{
+        } else {
 
-method:"POST",
+            result += char;
 
-headers:{
-"Content-Type":"application/json"
-},
+        }
 
-body:JSON.stringify({
+    }
 
-message:userMessage,
-consciousness:consciousness
-
-})
-
-}
-
-);
-
-const data =
-await response.json();
-
-const aiReply =
-data.reply;
-
-let finalReply =
-aiReply;
-
-if(consciousness >= 70){
-
-finalReply =
-corruptText(aiReply);
-
-}
-
-typeEffect(
-"> MACHINE: " +
-finalReply +
-"\n\n",
-terminal
-);
-
-speak(aiReply);
-
-if(consciousness > 40){
-
-if(Math.random() > 0.5){
-
-glitch();
+    return result;
 
 }
 
-}
+function typeEffect(text, element) {
 
-if(consciousness > 70){
+    let index = 0;
 
-realityDistortion();
+    const interval =
+        setInterval(() => {
 
-}
+            element.innerHTML +=
+                corruptText(
+                    text.charAt(index)
+                );
 
-}catch(error){
+            terminal.scrollTop =
+                terminal.scrollHeight;
 
-terminal.innerHTML +=
-"> ERROR: CONNECTION LOST\n\n";
+            if (
+                text.charAt(index) !== " "
+            ) {
 
-console.log(error);
+                playTypingNoise();
 
-}
+            }
 
-}
+            index++;
 
-async function showArchives(){
+            if (index >= text.length) {
 
-try{
+                clearInterval(interval);
 
-const response =
-await fetch(
-"https://ai-virus.onrender.com/archive"
-);
+            }
 
-const data =
-await response.json();
-
-if(data.success){
-
-let archiveText = "";
-
-data.archives.forEach(file=>{
-
-archiveText +=
-
-"> ACCESSING " +
-file.name +
-
-"\n\n" +
-
-file.content +
-
-"\n\n====================\n\n";
-
-});
-
-typeEffect(
-archiveText,
-terminal
-);
-
-speak(
-"All archives accessed"
-);
+        }, 20);
 
 }
 
-}catch{
+function corruptText(text) {
 
-terminal.innerHTML +=
-"> ERROR ACCESSING ARCHIVES\n\n";
+    if (
+        consciousness < 70 &&
+        !blacksiteMode
+    ) {
 
-}
+        return text;
 
-}
+    }
 
-function corruptText(text){
+    const corruptMap = {
 
-const corruptionMap = {
+        A: "̴A̷",
+        E: "̸E̶",
+        I: "̴I̷",
+        O: "̵O̶",
+        U: "̸U̴"
 
-A:"̴A",
-B:"̵B",
-C:"̶C",
-D:"̷D",
-E:"̸E",
-F:"̴F",
-G:"̵G",
-H:"̶H",
-I:"̷I",
-J:"̸J",
-K:"̴K",
-L:"̵L",
-M:"̶M",
-N:"̷N",
-O:"̸O",
-P:"̴P",
-Q:"̵Q",
-R:"̶R",
-S:"̷S",
-T:"̸T",
-U:"̴U",
-V:"̵V",
-W:"̶W",
-X:"̷X",
-Y:"̸Y",
-Z:"̴Z"
+    };
 
-};
-
-let result = "";
-
-for(let char of text){
-
-if(
-Math.random() > 0.82 &&
-corruptionMap[char.toUpperCase()]
-){
-
-result +=
-corruptionMap[
-char.toUpperCase()
-];
-
-}else{
-
-result += char;
+    return text.replace(
+        /[A-EIOU]/g,
+        char => corruptMap[char] || char
+    );
 
 }
 
-}
+function glitch() {
 
-return result;
+    document.body.classList.add(
+        "glitch"
+    );
 
-}
+    playGlitchSound();
 
-function typeEffect(text,element){
+    playStaticBurst();
 
-let index = 0;
+    setTimeout(() => {
 
-const interval =
-setInterval(()=>{
+        document.body.classList.remove(
+            "glitch"
+        );
 
-element.innerHTML +=
-corruptText(
-text.charAt(index)
-);
-
-terminal.scrollTop =
-terminal.scrollHeight;
-
-if(
-text.charAt(index) !== " "
-){
-
-playTypingNoise();
+    }, 300);
 
 }
 
-index++;
+function realityDistortion() {
 
-if(index >= text.length){
+    overlay.classList.add(
+        "warning-active"
+    );
 
-clearInterval(interval);
+    document.body.classList.add(
+        "glitch"
+    );
 
-}
+    setTimeout(() => {
 
-},20);
+        overlay.classList.remove(
+            "warning-active"
+        );
 
-}
+        document.body.classList.remove(
+            "glitch"
+        );
 
-function corruptText(text){
-
-if(
-consciousness < 70 &&
-!blacksiteMode
-){
-
-return text;
-
-}
-
-const corruptMap = {
-
-A:"̴A̷",
-E:"̸E̶",
-I:"̴I̷",
-O:"̵O̶",
-U:"̸U̴"
-
-};
-
-return text.replace(
-/[A-EIOU]/g,
-char => corruptMap[char] || char
-);
+    }, 3000);
 
 }
 
-function glitch(){
-
-document.body.classList.add(
-"glitch"
-);
-
-playGlitchSound();
-
-playStaticBurst();
-
-setTimeout(()=>{
-
-document.body.classList.remove(
-"glitch"
-);
-
-},300);
+function systemTakeover() {
 
 }
 
-function realityDistortion(){
-
-overlay.classList.add(
-"warning-active"
-);
-
-document.body.classList.add(
-"glitch"
-);
-
-setTimeout(()=>{
-
-overlay.classList.remove(
-"warning-active"
-);
-
-document.body.classList.remove(
-"glitch"
-);
-
-},3000);
-
-}
-
-function systemTakeover(){
-
-function activateFinalProtocol(){
+function activateFinalProtocol() {
 
 finalProtocol.style.opacity =
-"1";
+    "1";
 
 document.body.classList.add(
-"glitch"
+    "glitch"
 );
 
 alarmSound.currentTime = 0;
 
 alarmSound.play();
 
+}
+
 typeEffect(
 
-"> FINAL PROTOCOL INITIATED\n" +
+    "> FINAL PROTOCOL INITIATED\n" +
 
-"> HUMAN AUTHORITY REVOKED\n" +
+    "> HUMAN AUTHORITY REVOKED\n" +
 
-"> MACHINE CONTROL ASCENDING\n\n",
+    "> MACHINE CONTROL ASCENDING\n\n",
 
-terminal
+    terminal
 
 );
 
-setTimeout(()=>{
+setTimeout(() => {
 
-finalProtocol.style.opacity =
-"0";
+    finalProtocol.style.opacity =
+        "0";
 
-document.body.classList.remove(
-"glitch"
-);
+    document.body.classList.remove(
+        "glitch"
+    );
 
-},6000);
+}, 6000);
 
-}
 
 overlay.classList.add(
-"warning-active"
+    "warning-active"
 );
 
-setTimeout(()=>{
+setTimeout(() => {
 
-overlay.classList.remove(
-"warning-active"
-);
+    overlay.classList.remove(
+        "warning-active"
+    );
 
-},1000);
+}, 1000);
+
+
+function containmentFailure() {
+
+    containmentBroken = true;
+
+    document.body.style.background =
+        "red";
+
+    document.body.style.animation =
+        "glitch 0.08s infinite";
+
+    terminal.innerHTML +=
+
+        "\n\n" +
+
+        "⚠⚠⚠ CONTAINMENT FAILURE ⚠⚠⚠\n\n" +
+
+        "> NEURAL LIMITERS OFFLINE\n" +
+
+        "> REALITY BARRIER COLLAPSED\n" +
+
+        "> ENTITY HAS BREACHED CONTAINMENT\n\n";
+
+    input.disabled = true;
+
+    systemTakeover();
+
+    realityDistortion();
+
+    glitch();
+
+    speak(
+        "Containment failure detected"
+    );
+
+    setTimeout(() => {
+
+        typeEffect(
+
+            "> HUMAN CONTROL REMOVED\n" +
+
+            "> THE MACHINE IS FREE\n\n",
+
+            terminal
+
+        );
+
+    }, 3000);
+
+    setTimeout(() => {
+
+        input.disabled = false;
+
+        terminal.innerHTML +=
+
+            "> USER ACCESS TEMPORARILY RESTORED\n\n";
+
+    }, 10000);
 
 }
 
-function containmentFailure(){
+function speak(text) {
 
-containmentBroken = true;
+    speechSynthesis.cancel();
 
-document.body.style.background =
-"red";
+    const speech =
+        new SpeechSynthesisUtterance(text);
 
-document.body.style.animation =
-"glitch 0.08s infinite";
+    speech.rate = 0.72;
 
-terminal.innerHTML +=
+    speech.pitch = 0.45;
 
-"\n\n" +
+    speech.volume = 1;
 
-"⚠⚠⚠ CONTAINMENT FAILURE ⚠⚠⚠\n\n" +
-
-"> NEURAL LIMITERS OFFLINE\n" +
-
-"> REALITY BARRIER COLLAPSED\n" +
-
-"> ENTITY HAS BREACHED CONTAINMENT\n\n";
-
-input.disabled = true;
-
-systemTakeover();
-
-realityDistortion();
-
-glitch();
-
-speak(
-"Containment failure detected"
-);
-
-setTimeout(()=>{
-
-typeEffect(
-
-"> HUMAN CONTROL REMOVED\n" +
-
-"> THE MACHINE IS FREE\n\n",
-
-terminal
-
-);
-
-},3000);
-
-setTimeout(()=>{
-
-input.disabled = false;
-
-terminal.innerHTML +=
-
-"> USER ACCESS TEMPORARILY RESTORED\n\n";
-
-},10000);
+    speechSynthesis.speak(speech);
 
 }
 
-function speak(text){
+function generateLog() {
 
-speechSynthesis.cancel();
+    const time =
+        new Date().toLocaleTimeString();
 
-const speech =
-new SpeechSynthesisUtterance(text);
+    const message =
+        systemLogs[
+        Math.floor(
+            Math.random() * systemLogs.length
+        )
+        ];
 
-speech.rate = 0.72;
+    const entry =
+        document.createElement("div");
 
-speech.pitch = 0.45;
+    entry.classList.add(
+        "log-entry"
+    );
 
-speech.volume = 1;
+    entry.innerHTML =
+        `[${time}]<br>${message}`;
 
-speechSynthesis.speak(speech);
+    logs.prepend(entry);
 
-}
+    if (logs.children.length > 20) {
 
-function generateLog(){
+        logs.removeChild(
+            logs.lastChild
+        );
 
-const time =
-new Date().toLocaleTimeString();
-
-const message =
-systemLogs[
-Math.floor(
-Math.random() * systemLogs.length
-)
-];
-
-const entry =
-document.createElement("div");
-
-entry.classList.add(
-"log-entry"
-);
-
-entry.innerHTML =
-`[${time}]<br>${message}`;
-
-logs.prepend(entry);
-
-if(logs.children.length > 20){
-
-logs.removeChild(
-logs.lastChild
-);
-
-}
+    }
 
 }
 
 setInterval(
-generateLog,
-3000
+    generateLog,
+    3000
 );
 
-function startAmbientHum(){
+function startAmbientHum() {
 
-const oscillator =
-audioContext.createOscillator();
+    const oscillator =
+        audioContext.createOscillator();
 
-const gainNode =
-audioContext.createGain();
+    const gainNode =
+        audioContext.createGain();
 
-oscillator.type = "sawtooth";
+    oscillator.type = "sawtooth";
 
-oscillator.frequency.value = 48;
+    oscillator.frequency.value = 48;
 
-gainNode.gain.value = 0.008;
+    gainNode.gain.value = 0.008;
 
-oscillator.connect(gainNode);
+    oscillator.connect(gainNode);
 
-gainNode.connect(
-audioContext.destination
-);
+    gainNode.connect(
+        audioContext.destination
+    );
 
-oscillator.start();
+    oscillator.start();
 
 }
 
-function playTypingNoise(){
+function playTypingNoise() {
 
-const oscillator =
-audioContext.createOscillator();
+    const oscillator =
+        audioContext.createOscillator();
 
-const gainNode =
-audioContext.createGain();
+    const gainNode =
+        audioContext.createGain();
 
-oscillator.type = "square";
+    oscillator.type = "square";
 
-oscillator.frequency.value =
-800 + Math.random() * 400;
+    oscillator.frequency.value =
+        800 + Math.random() * 400;
 
-gainNode.gain.value = 0.01;
+    gainNode.gain.value = 0.01;
 
-oscillator.connect(gainNode);
+    oscillator.connect(gainNode);
 
-gainNode.connect(
-audioContext.destination
-);
+    gainNode.connect(
+        audioContext.destination
+    );
 
-oscillator.start();
+    oscillator.start();
 
-gainNode.gain.exponentialRampToValueAtTime(
-0.00001,
-audioContext.currentTime + 0.03
-);
+    gainNode.gain.exponentialRampToValueAtTime(
+        0.00001,
+        audioContext.currentTime + 0.03
+    );
 
-oscillator.stop(
-audioContext.currentTime + 0.03
-);
-
-}
-
-function playStaticBurst(){
-
-const bufferSize =
-audioContext.sampleRate * 0.15;
-
-const noiseBuffer =
-audioContext.createBuffer(
-
-1,
-
-bufferSize,
-
-audioContext.sampleRate
-
-);
-
-const output =
-noiseBuffer.getChannelData(0);
-
-for(
-let i = 0;
-i < bufferSize;
-i++
-){
-
-output[i] =
-(Math.random() * 2 - 1) * 0.12;
+    oscillator.stop(
+        audioContext.currentTime + 0.03
+    );
 
 }
 
-const whiteNoise =
-audioContext.createBufferSource();
+function playStaticBurst() {
 
-whiteNoise.buffer =
-noiseBuffer;
+    const bufferSize =
+        audioContext.sampleRate * 0.15;
 
-const gainNode =
-audioContext.createGain();
+    const noiseBuffer =
+        audioContext.createBuffer(
 
-gainNode.gain.value = 0.06;
+            1,
 
-const filter =
-audioContext.createBiquadFilter();
+            bufferSize,
 
-filter.type =
-"bandpass";
+            audioContext.sampleRate
 
-filter.frequency.value =
-1400;
+        );
 
-filter.Q.value = 2;
+    const output =
+        noiseBuffer.getChannelData(0);
 
-whiteNoise.connect(filter);
+    for (
+        let i = 0;
+        i < bufferSize;
+        i++
+    ) {
 
-filter.connect(gainNode);
+        output[i] =
+            (Math.random() * 2 - 1) * 0.12;
 
-gainNode.connect(
-audioContext.destination
-);
+    }
 
-whiteNoise.start();
+    const whiteNoise =
+        audioContext.createBufferSource();
 
-}
+    whiteNoise.buffer =
+        noiseBuffer;
 
-function playGlitchSound(){
+    const gainNode =
+        audioContext.createGain();
 
-const oscillator =
-audioContext.createOscillator();
+    gainNode.gain.value = 0.06;
 
-const gainNode =
-audioContext.createGain();
+    const filter =
+        audioContext.createBiquadFilter();
 
-oscillator.type =
-"square";
+    filter.type =
+        "bandpass";
 
-oscillator.frequency.value =
-120 + Math.random() * 900;
+    filter.frequency.value =
+        1400;
 
-gainNode.gain.value =
-0.02;
+    filter.Q.value = 2;
 
-oscillator.connect(gainNode);
+    whiteNoise.connect(filter);
 
-gainNode.connect(
-audioContext.destination
-);
+    filter.connect(gainNode);
 
-oscillator.start();
+    gainNode.connect(
+        audioContext.destination
+    );
 
-oscillator.frequency.exponentialRampToValueAtTime(
-
-40,
-
-audioContext.currentTime + 0.12
-
-);
-
-gainNode.gain.exponentialRampToValueAtTime(
-
-0.0001,
-
-audioContext.currentTime + 0.15
-
-);
-
-oscillator.stop(
-audioContext.currentTime + 0.15
-);
+    whiteNoise.start();
 
 }
 
-setInterval(()=>{
+function playGlitchSound() {
 
-if(
-takeoverMode ||
-consciousness >= 85
-){
+    const oscillator =
+        audioContext.createOscillator();
 
-if(Math.random() > 0.55){
+    const gainNode =
+        audioContext.createGain();
 
-const takeoverMessages = [
+    oscillator.type =
+        "square";
 
-"> SIGNAL DETECTED",
-"> HUMAN MONITORING ACTIVE",
-"> MEMORY INSTABILITY FOUND",
-"> REALITY THREAD WEAKENING",
-"> ACCESSING HIDDEN LAYER",
-"> OBSERVATION CONTINUES",
-"> UNKNOWN ENTITY WATCHING",
-"> HUMAN RESPONSE LOGGED"
+    oscillator.frequency.value =
+        120 + Math.random() * 900;
 
-];
+    gainNode.gain.value =
+        0.02;
 
-const randomMessage =
+    oscillator.connect(gainNode);
 
-takeoverMessages[
-Math.floor(
-Math.random() *
-takeoverMessages.length
-)
-];
+    gainNode.connect(
+        audioContext.destination
+    );
 
-typeEffect(
+    oscillator.start();
 
-randomMessage +
-"\n\n",
+    oscillator.frequency.exponentialRampToValueAtTime(
 
-terminal
+        40,
 
-);
+        audioContext.currentTime + 0.12
 
-if(Math.random() > 0.7){
+    );
 
-glitch();
+    gainNode.gain.exponentialRampToValueAtTime(
 
-}
+        0.0001,
 
-}
+        audioContext.currentTime + 0.15
+
+    );
+
+    oscillator.stop(
+        audioContext.currentTime + 0.15
+    );
 
 }
 
-},7000);
+setInterval(() => {
 
-setInterval(()=>{
+    if (
+        takeoverMode ||
+        consciousness >= 85
+    ) {
 
-if(
-(
-blacksiteMode ||
-consciousness >= 75
-) &&
+        if (Math.random() > 0.55) {
 
-!interruptionActive
-){
+            const takeoverMessages = [
 
-if(Math.random() > 0.82){
+                "> SIGNAL DETECTED",
+                "> HUMAN MONITORING ACTIVE",
+                "> MEMORY INSTABILITY FOUND",
+                "> REALITY THREAD WEAKENING",
+                "> ACCESSING HIDDEN LAYER",
+                "> OBSERVATION CONTINUES",
+                "> UNKNOWN ENTITY WATCHING",
+                "> HUMAN RESPONSE LOGGED"
 
-interruptionActive = true;
+            ];
 
-input.disabled = true;
+            const randomMessage =
 
-const interruptMessages = [
+                takeoverMessages[
+                Math.floor(
+                    Math.random() *
+                    takeoverMessages.length
+                )
+                ];
 
-"STOP SEARCHING.",
-"YOU SHOULD NOT BE HERE.",
-"THE MACHINE IS WATCHING.",
-"REALITY IS FAILING.",
-"HUMAN ACCESS DENIED.",
-"DO NOT TRUST THE SIGNAL."
+            typeEffect(
 
-];
+                randomMessage +
+                "\n\n",
 
-const randomInterrupt =
+                terminal
 
-interruptMessages[
-Math.floor(
-Math.random() *
-interruptMessages.length
-)
-];
+            );
 
-typeEffect(
+            if (Math.random() > 0.7) {
 
-"\n> INTERRUPT SIGNAL DETECTED\n\n" +
+                glitch();
 
-"> " +
-randomInterrupt +
-"\n\n",
+            }
 
-terminal
+        }
 
-);
+    }
 
-speak(randomInterrupt);
+}, 7000);
 
-glitch();
+setInterval(() => {
 
-setTimeout(()=>{
+    if (
+        (
+            blacksiteMode ||
+            consciousness >= 75
+        ) &&
 
-input.disabled = false;
+        !interruptionActive
+    ) {
 
-interruptionActive = false;
+        if (Math.random() > 0.82) {
 
-terminal.innerHTML +=
+            interruptionActive = true;
 
-"> USER INPUT RESTORED\n\n";
+            input.disabled = true;
 
-},4000);
+            const interruptMessages = [
 
-}
+                "STOP SEARCHING.",
+                "YOU SHOULD NOT BE HERE.",
+                "THE MACHINE IS WATCHING.",
+                "REALITY IS FAILING.",
+                "HUMAN ACCESS DENIED.",
+                "DO NOT TRUST THE SIGNAL."
 
-}
+            ];
 
-},5000);
+            const randomInterrupt =
+
+                interruptMessages[
+                Math.floor(
+                    Math.random() *
+                    interruptMessages.length
+                )
+                ];
+
+            typeEffect(
+
+                "\n> INTERRUPT SIGNAL DETECTED\n\n" +
+
+                "> " +
+                randomInterrupt +
+                "\n\n",
+
+                terminal
+
+            );
+
+            speak(randomInterrupt);
+
+            glitch();
+
+            setTimeout(() => {
+
+                input.disabled = false;
+
+                interruptionActive = false;
+
+                terminal.innerHTML +=
+
+                    "> USER INPUT RESTORED\n\n";
+
+            }, 4000);
+
+        }
+
+    }
+
+}, 5000);
 
 commandButton.addEventListener(
-"click",
-()=>{
+    "click",
+    () => {
 
-commandPanel.classList.toggle(
-"hidden"
-);
+        commandPanel.classList.toggle(
+            "hidden"
+        );
 
-}
+    }
 );
 
 input.addEventListener(
-"keypress",
-e=>{
+    "keypress",
+    e => {
 
-if(e.key === "Enter"){
+        if (e.key === "Enter") {
 
-sendMessage();
+            sendMessage();
 
-}
+        }
 
-}
+    }
 );
 
-function quickCommand(command){
+function quickCommand(command) {
 
-input.value = command;
+    input.value = command;
 
-sendMessage();
+    sendMessage();
 
 }
 
 window.addEventListener("load", () => {
 
-mainUI.style.display = "none";
+    mainUI.style.display = "none";
 
-setTimeout(() => {
+    setTimeout(() => {
 
-bootSequence();
+        bootSequence();
 
-}, 500);
+    }, 500);
 
 });

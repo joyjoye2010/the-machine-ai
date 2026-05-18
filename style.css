@@ -1,3 +1,7 @@
+html{
+touch-action:manipulation;
+}
+
 *{
 margin:0;
 padding:0;
@@ -6,6 +10,7 @@ font-family:Consolas,monospace;
 }
 
 body{
+
 background:
 radial-gradient(
 circle at center,
@@ -16,61 +21,14 @@ circle at center,
 color:#00ffcc;
 
 overflow:hidden;
+
 height:100vh;
+
 }
 
 .hidden{
 
 display:none;
-
-}
-
-#commandButton{
-
-position:fixed;
-top:20px;
-right:20px;
-z-index:9999;
-
-background:black;
-color:#00ffcc;
-
-border:1px solid #00ffcc;
-
-padding:10px 16px;
-
-cursor:pointer;
-
-font-family:monospace;
-
-}
-
-#commandButton{
-
-position:absolute;
-
-right:20px;
-top:50%;
-
-transform:translateY(-50%);
-
-background:transparent;
-
-border:none;
-
-color:#00d9ff;
-
-font-family:monospace;
-
-font-size:14px;
-
-cursor:pointer;
-
-opacity:0.6;
-
-transition:0.3s;
-
-z-index:1000;
 
 }
 
@@ -84,9 +42,10 @@ color:#00ffff;
 
 #commandPanel{
 
-position:absolute;
+position:fixed;
 
 right:70px;
+
 top:50%;
 
 transform:translateY(-50%);
@@ -138,7 +97,7 @@ opacity:0.8;
 
 display:none;
 
-}s
+}
 
 .noise{
 position:fixed;
@@ -146,7 +105,7 @@ width:100%;
 height:100%;
 background-image:
 url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-
+pointer-events:none;
 opacity:0.08;
 
 z-index:-2;
@@ -156,7 +115,7 @@ z-index:-2;
 position:fixed;
 width:100%;
 height:100%;
-
+pointer-events:none;
 background:
 repeating-linear-gradient(
 to bottom,
@@ -225,22 +184,24 @@ opacity:1;
 }
 
 .boot-screen{
+
+position:fixed;
+
+top:0;
+left:0;
+
 width:100%;
 height:100vh;
 
 display:flex;
+
 justify-content:center;
 align-items:center;
 
-font-size:2rem;
+background:black;
 
-letter-spacing:5px;
+z-index:99999;
 
-text-shadow:
-0 0 20px #00ffcc;
-
-animation:
-flicker 2s infinite;
 }
 
 @keyframes flicker{
@@ -255,13 +216,6 @@ opacity:0.3;
 
 }
 
-.main-ui{
-padding:20px;
-height:100vh;
-
-display:flex;
-flex-direction:column;
-}
 
 .top-bar{
 display:flex;
@@ -292,30 +246,36 @@ font-weight:bold;
 }
 
 .dashboard{
+
 flex:1;
+
 display:flex;
+
 gap:20px;
+
+min-width:0;
 min-height:0;
+
+overflow:hidden;
+
+height:calc(100vh - 120px);
+
 }
 
 .logs-panel{
+
 width:300px;
-
-background:
-rgba(0,255,204,0.05);
-
-border:1px solid rgba(0,255,204,0.15);
-
-border-radius:15px;
-
-padding:20px;
 
 display:flex;
 flex-direction:column;
 
 overflow:hidden;
 
-backdrop-filter:blur(10px);
+min-height:0;
+
+border-right:
+1px solid rgba(0,255,204,0.15);
+
 }
 
 .logs-panel h3{
@@ -324,11 +284,22 @@ color:#00ffcc;
 }
 
 #logs{
+
 flex:1;
+
 overflow-y:auto;
-font-size:0.9rem;
+overflow-x:hidden;
+
+padding-bottom:20px;
+
+min-height:0;
+
 line-height:1.6;
-opacity:0.8;
+
+padding-right:6px;
+
+-webkit-overflow-scrolling:touch;
+
 }
 
 .log-entry{
@@ -340,6 +311,7 @@ border-bottom:
 }
 
 .terminal-panel{
+
 flex:1;
 
 display:flex;
@@ -355,23 +327,30 @@ border-radius:20px;
 
 padding:20px;
 
-backdrop-filter:blur(12px);
-
 overflow:hidden;
+
+min-width:0;
 min-height:0;
+
+position:relative;
+
 }
 
 .core-container{
+
 position:relative;
 
 width:220px;
 height:220px;
 
-margin:10px auto 30px;
+margin:0 auto 20px auto;
+
+flex-shrink:0;
 
 display:flex;
 justify-content:center;
 align-items:center;
+
 }
 
 .core{
@@ -449,25 +428,46 @@ transform:scale(1);
 }
 
 #terminal{
+
 flex:1;
+
+min-height:0;
 
 overflow-y:auto;
 overflow-x:hidden;
 
+padding-right:10px;
+
 white-space:pre-wrap;
+
+word-break:break-word;
+
+overflow-wrap:break-word;
 
 line-height:1.8;
 
-padding-right:10px;
+-webkit-overflow-scrolling:touch;
 
-scroll-behavior:smooth;
 }
 
+
 .input-area{
+
 display:flex;
+
 gap:10px;
 
-margin-top:20px;
+align-items:center;
+
+padding-top:15px;
+
+margin-top:10px;
+
+border-top:
+1px solid rgba(0,255,204,0.12);
+
+flex-shrink:0;
+
 }
 
 input{
@@ -550,6 +550,8 @@ transform:translate(0);
 
 position:fixed;
 
+pointer-events:none;
+
 top:0;
 left:0;
 
@@ -624,29 +626,30 @@ opacity:1;
 
 position:fixed;
 
-bottom:20px;
-
+top:70px;
 right:20px;
 
-background:black;
+background:rgba(0,0,0,0.7);
 
-color:#00ffff;
+border:1px solid #00ffcc;
 
-border:1px solid #00ffff;
+color:#00ffcc;
 
-padding:8px 14px;
+padding:10px 16px;
+
+border-radius:10px;
 
 font-family:monospace;
 
-font-size:12px;
+font-size:13px;
 
 cursor:pointer;
 
-opacity:0.35;
-
-z-index:9999;
+opacity:0.7;
 
 transition:0.3s;
+
+z-index:9999;
 
 }
 
@@ -1080,6 +1083,28 @@ transform:scale(1);
 
 }
 
+.hidden{
+display:none !important;
+}
+
+.logs-panel,
+#terminal{
+
+-webkit-overflow-scrolling:touch;
+
+}
+
 .main-ui{
+
+padding:20px;
+
+height:100vh;
+
+box-sizing:border-box;
+
 display:flex;
+flex-direction:column;
+
+overflow:hidden;
+
 }
